@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ToDoList.Models.ToDoList>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div class="jumbotron">
+    @{ Html.RenderAction("Index", "Search"); }
+
+</div>
+
+<div class="row">
+    <div class="col-md-11">
+        <h2>Your list</h2>
+
+        @foreach (var item in Model)
+        {
+            <hr /> <span class="info">
+                @item.DeadLine.Value.ToShortDateString()
+            </span>
+
+            <p @(item.Done == 1 ? "style=text-decoration:line-through" : "")>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </p>
+
+            @Html.ActionLink(item.Done == 0 ? "Done" : "Undo", "ChangeStatus", new { id = item.Id })
+            <span>-</span>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        }
+
+    </div>
+
+</div>

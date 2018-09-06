@@ -1,0 +1,9 @@
+﻿@model ToDoList.Models.ToDoList
+
+@using (Html.BeginForm("Search", "Search"))
+{
+    <h2>Search your list</h2>
+    <p>  <input type="text" name="Keyword" /></p>
+    <p><input id="btnSearch" type="submit" value="Search" class="btn btn-default" /></p>
+
+}

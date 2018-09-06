@@ -1,0 +1,41 @@
+﻿
+<h2>Insert</h2>
+
+<div class="jumbotron">
+    @{ Html.RenderAction("Index", "Search"); }
+
+</div>
+
+@model ToDoList.Models.ToDoList
+
+@using (Html.BeginForm("Insert", "Insert"))
+{
+    <h2>Add List</h2>
+    <p>
+
+        @Html.TextBoxFor(m => m.ItemName, new { @style = "width:700px;" })
+        @Html.ValidationMessageFor(model => model.ItemName)
+    </p>
+    <p>
+
+        <div class="form-group input-group-sm">
+            @Html.LabelFor(model => model.DeadLine)
+            @Html.TextBoxFor(model => model.DeadLine, new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.DeadLine)
+
+        </div>
+
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({
+                    dateFormat: 'dd/mm/yy'
+                })
+            });
+        </script>
+    </p>
+    @ViewBag.Message
+    <p><input id="btnInsert" type="submit" value="Insert" class="btn btn-default" /></p>
+
+}
+
+
